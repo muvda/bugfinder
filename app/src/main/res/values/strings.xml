@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">As3</string>
+    <string name="skip_to_main_menu">Skip to Main Menu</string>
+    <string name="start">Start</string>
+    <string name="option">Option</string>
+    <string name="help">Help</string>
+    <string name="made_by">Made by Duy Anh Vu</string>
 </resources>
