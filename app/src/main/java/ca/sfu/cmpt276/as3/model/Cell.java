@@ -8,21 +8,18 @@ public class Cell {
     private boolean isScanned;
     private boolean isExplored;
     private boolean isBug;
-    private int numNeighbourBugs;
+    private int unknowBugs;
 
     public Cell(Coordinate coordinate) {
+        neighbourBugs = new ArrayList<>();
         this.coordinate = coordinate;
         this.isScanned = false;
         this.isExplored = false;
         this.isBug = false;
     }
 
-    public Coordinate getCoordinate() {
-        return coordinate;
-    }
-
-    public int getNumNeighbourBugs() {
-        return numNeighbourBugs;
+    public int getUnknowBugs() {
+        return unknowBugs;
     }
 
     public boolean isExplored() {
@@ -35,10 +32,6 @@ public class Cell {
 
     public boolean isBug() {
         return isBug;
-    }
-
-    public ArrayList<Coordinate> getNeighbourBugs() {
-        return neighbourBugs;
     }
 
     public void setExplored(boolean explored) {
@@ -70,7 +63,7 @@ public class Cell {
         if (game.at(this.coordinate).isBug){
             this.neighbourBugs.add(this.coordinate);
         }
-        numNeighbourBugs = neighbourBugs.size();
+        unknowBugs = neighbourBugs.size();
     }
 
     public void updateNeighbour(Game game){
@@ -80,6 +73,6 @@ public class Cell {
                 bugExplored--;
             }
         }
-        numNeighbourBugs = bugExplored;
+        unknowBugs = bugExplored;
     }
 }

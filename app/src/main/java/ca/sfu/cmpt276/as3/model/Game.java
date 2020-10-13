@@ -9,9 +9,13 @@ public class Game {
     private int numBugs;
     private boolean isWon;
     private int numBugsLeft;
+    private int scanUsed;
 
-    public Game(int sizeX, int sizeY, int numBugs) {
-        this.numBugs = numBugs;
+    public Game(Option option) {
+        this.numBugs = option.getNumBugs();
+        sizeX = option.getSizeX();
+        sizeY = option.getSizeY();
+        scanUsed = 0;
         board = new Cell[sizeX][sizeY];
         isWon = false;
         numBugsLeft = numBugs;
@@ -24,6 +28,10 @@ public class Game {
 
         setupBug();
         setupNeighbourBug();
+    }
+
+    public int getScanUsed() {
+        return scanUsed;
     }
 
     public int getSizeX() {
@@ -58,6 +66,7 @@ public class Game {
     }
 
     public void scan(int x, int y){
+        scanUsed++;
         Cell cell = at(x, y);
         if (!cell.isBug() || cell.isExplored()){
             cell.setScanned(true);
@@ -66,9 +75,11 @@ public class Game {
             cell.setExplored(true);
             numBugsLeft--;
         }
+        updateGame();
+        checkWin();
     }
 
-    public void updateGame(){
+    private void updateGame(){
         for (int x = 0;x < sizeX;x++){
             for (int y = 0; y < sizeY;y++){
                 board[x][y].updateNeighbour(this);
@@ -76,7 +87,7 @@ public class Game {
         }
     }
 
-    public void checkWin(){
+    private void checkWin(){
         if (numBugsLeft==0){
             isWon = true;
         }

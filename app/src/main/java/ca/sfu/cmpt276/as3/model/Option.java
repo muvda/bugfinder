@@ -14,7 +14,7 @@ public class Option {
         numPlays = 0;
     }
 
-    public Option getInstance(){
+    public static Option getInstance(){
         if (optionInstance == null){
             optionInstance = new Option();
         }

@@ -8,12 +8,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import ca.sfu.cmpt276.as3.model.Option;
+
 public class MenuActivity extends AppCompatActivity {
+    private Option option;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        option = Option.getInstance();
 
         setupButton();
     }
