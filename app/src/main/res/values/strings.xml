@@ -1,8 +1,21 @@
 <resources>
-    <string name="app_name">As3</string>
-    <string name="skip_to_main_menu">Skip to Main Menu</string>
-    <string name="start">Start</string>
-    <string name="option">Option</string>
-    <string name="help">Help</string>
-    <string name="made_by">Made by Duy Anh Vu</string>
+    <string name="app_name">Bugs finder</string>
+    <string name="launch_skip">Skip to Main Menu</string>
+    <string name="menu_start">Start</string>
+    <string name="menu_option">Option</string>
+    <string name="menu_help">Help</string>
+    <string name="launch_author">Made by Duy Anh Vu</string>
+    <string name="option_bugs">%1$d bugs</string>
+    <string name="option_size">%1$d x %2$d</string>
+    <string name="game_bugs_info">Found %1$d of %2$d bugs</string>
+    <string name="game_scan_info"># Scans used: %1$d</string>
+    <string name="game_time_info">Time played: %1$d</string>
+    <string name="option_size_text">Board sizes :</string>
+    <string name="option_bugs_text">Number of bugs :</string>
+    <string name="game_bugs_neighbour">%1$d</string>
+    <string name="win_message">You Win !</string>
+    <string name="option_erase_time_button">Erased time played</string>
+    <string name="game_best_info">Best score : %1$d</string>
+    <string name="game_best_info_new">Best score : not set</string>
+    <string name="option_erase_best_button">Erased best scores</string>
 </resources>

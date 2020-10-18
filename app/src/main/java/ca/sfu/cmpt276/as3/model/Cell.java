@@ -8,21 +8,18 @@ public class Cell {
     private boolean isScanned;
     private boolean isExplored;
     private boolean isBug;
-    private int numNeighbourBugs;
+    private int unknowBugs;
 
     public Cell(Coordinate coordinate) {
+        neighbourBugs = new ArrayList<>();
         this.coordinate = coordinate;
         this.isScanned = false;
         this.isExplored = false;
         this.isBug = false;
     }
 
-    public Coordinate getCoordinate() {
-        return coordinate;
-    }
-
-    public int getNumNeighbourBugs() {
-        return numNeighbourBugs;
+    public int getUnknowBugs() {
+        return unknowBugs;
     }
 
     public boolean isExplored() {
@@ -35,10 +32,6 @@ public class Cell {
 
     public boolean isBug() {
         return isBug;
-    }
-
-    public ArrayList<Coordinate> getNeighbourBugs() {
-        return neighbourBugs;
     }
 
     public void setExplored(boolean explored) {
@@ -54,13 +47,13 @@ public class Cell {
     }
 
     public void setNeighbourBugs(Game game) {
-        for (int x = 0; x < game.getSizeX(); x++){
+        for (int x = 0; x < game.getWidth(); x++){
             Coordinate map = new Coordinate(x,coordinate.getY());
             if (game.at(map).isBug()) {
                 this.neighbourBugs.add(map);
             }
         }
-        for (int y = 0; y < game.getSizeY(); y++){
+        for (int y = 0; y < game.getHeight(); y++){
             Coordinate map = new Coordinate(coordinate.getX(),y);
             if (game.at(map).isBug()) {
                 this.neighbourBugs.add(map);
@@ -70,7 +63,7 @@ public class Cell {
         if (game.at(this.coordinate).isBug){
             this.neighbourBugs.add(this.coordinate);
         }
-        numNeighbourBugs = neighbourBugs.size();
+        unknowBugs = neighbourBugs.size();
     }
 
     public void updateNeighbour(Game game){
@@ -80,6 +73,6 @@ public class Cell {
                 bugExplored--;
             }
         }
-        numNeighbourBugs = bugExplored;
+        unknowBugs = bugExplored;
     }
 }

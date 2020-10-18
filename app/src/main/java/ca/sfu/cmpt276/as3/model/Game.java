@@ -4,20 +4,24 @@ import java.util.Random;
 
 public class Game {
     private Cell[][] board;
-    private int sizeX;
-    private int sizeY;
+    private int width;
+    private int height;
     private int numBugs;
     private boolean isWon;
     private int numBugsLeft;
+    private int scanUsed;
 
-    public Game(int sizeX, int sizeY, int numBugs) {
-        this.numBugs = numBugs;
-        board = new Cell[sizeX][sizeY];
+    public Game(Option option) {
+        this.numBugs = option.getNumBugs();
+        width = option.getWidth();
+        height = option.getHeight();
+        scanUsed = 0;
+        board = new Cell[width][height];
         isWon = false;
         numBugsLeft = numBugs;
 
-        for (int x = 0;x < sizeX;x++){
-            for (int y = 0; y < sizeY;y++){
+        for (int x = 0;x < width;x++){
+            for (int y = 0; y < height; y++){
                 board[x][y] = new Cell(new Coordinate(x,y));
             }
         }
@@ -26,12 +30,16 @@ public class Game {
         setupNeighbourBug();
     }
 
-    public int getSizeX() {
-        return sizeX;
+    public int getScanUsed() {
+        return scanUsed;
     }
 
-    public int getSizeY() {
-        return sizeY;
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public int getNumBugs() {
@@ -47,7 +55,7 @@ public class Game {
     }
 
     public Cell at(int x, int y){
-        if (x < 0 || x >= sizeX || y < 0 || y >= sizeY){
+        if (x < 0 || x >= width || y < 0 || y >= height){
             throw new IllegalArgumentException();
         }
         return board[x][y];
@@ -58,6 +66,7 @@ public class Game {
     }
 
     public void scan(int x, int y){
+        scanUsed++;
         Cell cell = at(x, y);
         if (!cell.isBug() || cell.isExplored()){
             cell.setScanned(true);
@@ -66,25 +75,27 @@ public class Game {
             cell.setExplored(true);
             numBugsLeft--;
         }
+        updateGame();
+        checkWin();
     }
 
-    public void updateGame(){
-        for (int x = 0;x < sizeX;x++){
-            for (int y = 0; y < sizeY;y++){
+    private void updateGame(){
+        for (int x = 0;x < width;x++){
+            for (int y = 0; y < height; y++){
                 board[x][y].updateNeighbour(this);
             }
         }
     }
 
-    public void checkWin(){
+    private void checkWin(){
         if (numBugsLeft==0){
             isWon = true;
         }
     }
 
     private void setupNeighbourBug() {
-        for (int x = 0;x < sizeX;x++){
-            for (int y = 0; y < sizeY;y++){
+        for (int x = 0;x < width;x++){
+            for (int y = 0; y < height; y++){
                 at(x,y).setNeighbourBugs(this);
             }
         }
@@ -97,8 +108,8 @@ public class Game {
             int xPos;
             int yPos;
             do {
-                xPos = randX.nextInt(sizeX);
-                yPos = randY.nextInt(sizeY);
+                xPos = randX.nextInt(width);
+                yPos = randY.nextInt(height);
             } while (board[xPos][yPos].isBug());
             board[xPos][yPos].setBug(true);
         }

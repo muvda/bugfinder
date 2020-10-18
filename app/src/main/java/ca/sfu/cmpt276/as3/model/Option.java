@@ -1,36 +1,44 @@
 package ca.sfu.cmpt276.as3.model;
 
 public class Option {
-    private int sizeX;
-    private int sizeY;
+    private int width;
+    private int height;
     private int numBugs;
     private int numPlays;
+    private int[] bestScores = new int[12];
+    //private int[] bestScores = {0,0,0,0,0,0,0,0,0,0,0,0};
+
     private static Option optionInstance = null;
 
     private Option(){
-        sizeX = 4;
-        sizeY = 6;
-        numBugs = 6;
-        numPlays = 0;
     }
 
-    public Option getInstance(){
+    public static Option getInstance(){
         if (optionInstance == null){
             optionInstance = new Option();
         }
         return optionInstance;
     }
 
-    public void setSizeX(int sizeX) {
-        this.sizeX = sizeX;
+    public void setWidth(int width) {
+        this.width = width;
     }
 
-    public void setSizeY(int sizeY) {
-        this.sizeY = sizeY;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public void setNumBugs(int numBugs) {
         this.numBugs = numBugs;
+    }
+
+
+    public void setBestScoreAt(int index,int val) {
+        bestScores[index] = val;
+    }
+
+    public void setNumPlays(int numPlays) {
+        this.numPlays = numPlays;
     }
 
     public void eraseNumPlays(){
@@ -41,12 +49,12 @@ public class Option {
         this.numPlays++;
     }
 
-    public int getSizeX() {
-        return sizeX;
+    public int getWidth() {
+        return width;
     }
 
-    public int getSizeY() {
-        return sizeY;
+    public int getHeight() {
+        return height;
     }
 
     public int getNumBugs() {
@@ -55,5 +63,13 @@ public class Option {
 
     public int getNumPlays() {
         return numPlays;
+    }
+
+    public int getBestScoreAt(int index){
+        return bestScores[index];
+    }
+
+    public int[] getBestScores() {
+        return bestScores;
     }
 }

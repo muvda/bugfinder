@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="num_board_height">
+        <item>6</item>
+        <item>10</item>
+        <item>15</item>
+    </integer-array>
+
+    <integer name="default_num_board_height">6</integer>
+</resources>
