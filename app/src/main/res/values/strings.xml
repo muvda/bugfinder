@@ -14,5 +14,8 @@
     <string name="option_bugs_text">Number of bugs :</string>
     <string name="game_bugs_neighbour">%1$d</string>
     <string name="win_message">You Win !</string>
-    <string name="option_erase_button">Erased time played</string>
+    <string name="option_erase_time_button">Erased time played</string>
+    <string name="game_best_info">Best score : %1$d</string>
+    <string name="game_best_info_new">Best score : not set</string>
+    <string name="option_erase_best_button">Erased best scores</string>
 </resources>

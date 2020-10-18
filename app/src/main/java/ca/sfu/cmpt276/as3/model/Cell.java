@@ -47,13 +47,13 @@ public class Cell {
     }
 
     public void setNeighbourBugs(Game game) {
-        for (int x = 0; x < game.getSizeX(); x++){
+        for (int x = 0; x < game.getWidth(); x++){
             Coordinate map = new Coordinate(x,coordinate.getY());
             if (game.at(map).isBug()) {
                 this.neighbourBugs.add(map);
             }
         }
-        for (int y = 0; y < game.getSizeY(); y++){
+        for (int y = 0; y < game.getHeight(); y++){
             Coordinate map = new Coordinate(coordinate.getX(),y);
             if (game.at(map).isBug()) {
                 this.neighbourBugs.add(map);
