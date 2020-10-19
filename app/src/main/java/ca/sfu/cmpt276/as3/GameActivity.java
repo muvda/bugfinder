@@ -191,7 +191,7 @@ public class GameActivity extends AppCompatActivity {
             Bitmap resize = Bitmap.createScaledBitmap(orginal,width,height,true);
             button.setBackground(new BitmapDrawable(getResources(),resize));
         }
-        else if (!cell.isBug() || cell.isExplored()){
+        else if ( !cell.isScanned() && !cell.isBug() || cell.isExplored()){
             MediaPlayer player = MediaPlayer.create(this,R.raw.scan);
             player.start();
             button.setText(getString(R.string.game_bugs_neighbour,cell.getUnknowBugs()));
