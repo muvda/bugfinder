@@ -26,13 +26,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.35000002"
-        app:srcCompat="@mipmap/linux" />
+        app:srcCompat="@mipmap/linux"
+        android:contentDescription="@string/tux" />
 
     <TextView
         android:id="@+id/text_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="40dp"
         android:text="@string/launch_author"
         android:textColor="#FFFFFF"
         android:textSize="24sp"

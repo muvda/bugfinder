@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bugs finder</string>
+    <string name="app_name">Bugs Finder</string>
     <string name="launch_skip">Skip to Main Menu</string>
     <string name="menu_start">Start</string>
     <string name="menu_option">Option</string>
@@ -18,4 +18,20 @@
     <string name="game_best_info">Best score : %1$d</string>
     <string name="game_best_info_new">Best score : not set</string>
     <string name="option_erase_best_button">Erased best scores</string>
+    <string name="help_context_text">You have notice some pesky bugs in you Linux system after the newest update. Now you must find them all before your computer is ruined !</string>
+    <string name="help_guide_text">When you scan a folder, it will either reveal the number for bugs in other folders within the same row and height, or remove a bug if it exist, which you can scan again for the same information. The game end if you find all bugs in the Linux system.</string>
+    <string name="help_link_image">Image sources :</string>
+    <string name="image_link_1">https://www.flaticon.com/free-icon/bug_1017449</string>
+    <string name="image_link_2">https://www.flaticon.com/free-icon/bug_752541</string>
+    <string name="image_link_3">https://www.flaticon.com/free-icon/linux_226772</string>
+    <string name="image_link_4">https://opencoursehub.cs.sfu.ca/bfraser/solutions/276/images/Images/</string>
+    <string name="image_link_5">https://wallpapercave.com/linux-tux-wallpaper</string>
+    <string name="menu_title">Main Menu</string>
+    <string name="game_title">Game</string>
+    <string name="option_title">Option</string>
+    <string name="help_title">Help</string>
+    <string name="help_link_sound">Sound effect sources</string>
+    <string name="sound_link_1">http://www.orangefreesounds.com/police-radio-sound/</string>
+    <string name="sound_link_2">http://www.orangefreesounds.com/scan-sound/</string>
+    <string name="tux">Tux</string>
 </resources>

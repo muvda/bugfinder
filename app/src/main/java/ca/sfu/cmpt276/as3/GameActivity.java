@@ -9,7 +9,9 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -176,7 +178,11 @@ public class GameActivity extends AppCompatActivity {
 
         Button button = buttons[x][y];
         Cell cell = game.at(x,y);
-        if (cell.isBug()){
+        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        if (cell.isBug() && !cell.isExplored()){
+            MediaPlayer player = MediaPlayer.create(this,R.raw.bug_found);
+            player.start();
+            v.vibrate(500);
 
             int height = button.getHeight();
             int width = button.getWidth();
@@ -186,7 +192,10 @@ public class GameActivity extends AppCompatActivity {
             button.setBackground(new BitmapDrawable(getResources(),resize));
         }
         else if (!cell.isBug() || cell.isExplored()){
+            MediaPlayer player = MediaPlayer.create(this,R.raw.scan);
+            player.start();
             button.setText(getString(R.string.game_bugs_neighbour,cell.getUnknowBugs()));
+            v.vibrate(200);
         }
         game.scan(x,y);
         updateGameInfo();
