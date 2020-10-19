@@ -67,7 +67,7 @@ public class Game {
 
     public void scan(int x, int y){
         Cell cell = at(x, y);
-        if (!cell.isBug() || cell.isExplored()){
+        if ( !cell.isScanned() && !cell.isBug() || cell.isExplored()){
             cell.setScanned(true);
             scanUsed++;
         }
